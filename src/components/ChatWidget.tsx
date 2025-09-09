@@ -217,6 +217,12 @@ const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 1,
+      text: "Hello! How can we help you with your automotive needs today?",
+      sender: 'support',
+      timestamp: new Date()
+    }
   ]);
   const [isLoading, setIsLoading] = useState(false);
 
