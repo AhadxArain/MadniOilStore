@@ -303,7 +303,7 @@ const ChatWidget = () => {
 
     try {
       const response = await fetch(
-        "https://madniworkshop.app.n8n.cloud/webhook/258c7d52-2024-451c-9541-fe6de48131f9",
+        "https://n8n.srv1001376.hstgr.cloud/webhook/258c7d52-2024-451c-9541-fe6de48131f9",
         {
           method: "POST",
           headers: {
