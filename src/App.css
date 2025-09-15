@@ -1,12 +1,13 @@
-/* ✅ FIXED APP.CSS - Mobile Scroll Issue Resolved */
+/* 🚨 EMERGENCY MOBILE SCROLL FIX - Replace in App.css */
 
 #root {
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem; /* Mobile ke liye smaller padding */
+  padding: 1rem;
   text-align: center;
-  overflow-x: hidden;
+  /* REMOVE overflow-x: hidden temporarily */
+  /* overflow-x: hidden; */
   min-height: 100vh;
   box-sizing: border-box;
 }
@@ -18,12 +19,29 @@
   }
 }
 
-/* Main wrapper for better control */
+/* Main wrapper - SIMPLIFIED */
 .main-wrapper {
   width: 100%;
-  overflow-x: hidden;
+  /* REMOVE overflow-x: hidden temporarily */
+  /* overflow-x: hidden; */
   position: relative;
   min-height: 100vh;
+}
+
+/* Mobile scrolling fixes - MINIMAL */
+body {
+  margin: 0;
+  padding: 0;
+  /* REMOVE overflow-x: hidden temporarily */
+  /* overflow-x: hidden; */
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+}
+
+html {
+  /* REMOVE overflow-x: hidden temporarily */
+  /* overflow-x: hidden; */
+  -webkit-text-size-adjust: 100%;
 }
 
 .logo {
@@ -62,21 +80,4 @@
 
 .read-the-docs {
   color: #888;
-}
-
-/* Mobile scrolling fixes */
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  -webkit-text-size-adjust: 100%;
-  position: relative;
-}
-
-html {
-  width: 100%;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
 }
