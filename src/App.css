@@ -1,107 +1,19 @@
-/* ✅ OPTIMIZED APP.CSS - Mobile Scroll Issue FULLY Resolved */
-
-/* Global resets for better mobile scroll */
-* {
-  box-sizing: border-box;
-}
-
-html {
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-  /* Mobile scroll optimizations */
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  min-height: 100vh;
-  overflow-x: hidden;
-  position: relative;
-  
-  /* ✅ KEY MOBILE FIXES */
-  -webkit-overflow-scrolling: touch;
-  -webkit-text-size-adjust: 100%;
-  touch-action: pan-y;
-  overscroll-behavior: contain;
-  -webkit-transform: translate3d(0,0,0);
-}
-
 #root {
-  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 1rem; /* Mobile ke liye kam padding */
+  padding: 2rem;
   text-align: center;
-  overflow-x: hidden;
-  min-height: 100vh;
-  box-sizing: border-box;
-  
-  /* ✅ Mobile scroll enhancements */
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-  transform: translate3d(0,0,0); /* Hardware acceleration */
 }
 
-/* Desktop ke liye larger padding */
-@media (min-width: 768px) {
-  #root {
-    padding: 2rem;
-  }
-}
-
-/* Main wrapper for better control */
-.main-wrapper {
-  width: 100%;
-  overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
-  
-  /* ✅ Mobile scroll fixes */
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior: contain;
-  touch-action: pan-y;
-}
-
-/* ✅ MOBILE SPECIFIC OPTIMIZATIONS */
-@media (max-width: 767px) {
-  body {
-    /* iOS Safari specific fixes */
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
-    -webkit-transform: translateZ(0);
-  }
-  
-  #root {
-    padding: 0.5rem;
-    /* Prevent viewport jumping */
-    min-height: -webkit-fill-available;
-  }
-  
-  /* Fix for iOS address bar */
-  .main-wrapper {
-    min-height: -webkit-fill-available;
-  }
-}
-
-/* ✅ PERFORMANCE OPTIMIZATIONS */
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-  /* Hardware acceleration */
-  transform: translate3d(0,0,0);
 }
-
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -123,32 +35,8 @@ body {
 
 .card {
   padding: 2em;
-  /* Mobile me kam padding */
-  @media (max-width: 767px) {
-    padding: 1em;
-  }
 }
 
 .read-the-docs {
   color: #888;
-}
-
-/* ✅ ADDITIONAL MOBILE FIXES */
-@media (max-width: 767px) {
-  /* Prevent horizontal overflow */
-  * {
-    max-width: 100%;
-  }
-  
-  /* Better touch targets */
-  button, a, [role="button"] {
-    min-height: 44px;
-    min-width: 44px;
-  }
-  
-  /* Smooth scroll momentum */
-  .scrollable {
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior: contain;
-  }
 }
