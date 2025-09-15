@@ -13,23 +13,25 @@ import OilChangeSetup from "./pages/OilChangeSetup";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/mechanical-work" element={<MechanicalWork />} />
-          <Route path="/electrical-work" element={<ElectricalWork />} />
-          <Route path="/denting-painting" element={<DentingPainting />} />
-          <Route path="/oil-change-setup" element={<OilChangeSetup />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <div className="main-wrapper">
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/mechanical-work" element={<MechanicalWork />} />
+            <Route path="/electrical-work" element={<ElectricalWork />} />
+            <Route path="/denting-painting" element={<DentingPainting />} />
+            <Route path="/oil-change-setup" element={<OilChangeSetup />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </div>
 );
 
 export default App;
