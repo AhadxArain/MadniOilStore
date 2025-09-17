@@ -1,9 +1,11 @@
+/* Madni Oil Store - Automotive Theme Design System */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Madni Oil Store - Automotive Theme Design System */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -114,11 +116,20 @@
 @layer base {
   * {
     @apply border-border;
+    box-sizing: border-box;
+  }
+
+  html {
+    overflow-x: hidden;
   }
 
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -133,17 +144,20 @@
     @apply bg-primary text-primary-foreground px-8 py-3 rounded-lg font-semibold
            transition-all duration-300 hover:scale-105 hover:shadow-xl
            shadow-automotive border-0 cursor-pointer;
+    max-width: 100%;
   }
 
   .btn-automotive-outline {
     @apply border-2 border-primary text-primary bg-transparent px-8 py-3 rounded-lg 
            font-semibold transition-all duration-300 hover:bg-primary hover:text-primary-foreground
            hover:scale-105 hover:shadow-xl cursor-pointer;
+    max-width: 100%;
   }
 
   .btn-secondary {
     @apply bg-secondary text-secondary-foreground px-8 py-3 rounded-lg font-semibold
            transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer;
+    max-width: 100%;
   }
 
   /* Service Card Hover Effects */
@@ -151,6 +165,8 @@
     @apply bg-card rounded-xl p-6 shadow-card transition-all duration-300
            hover:scale-105 hover:shadow-xl hover:-translate-y-2 cursor-pointer
            border border-border;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   /* Chat Widget */
@@ -204,9 +220,12 @@
     animation: bounce 3s infinite;
   }
 
-  /* Logo slideshow animation */
+  /* Fixed Logo slideshow animation */
   .animate-scroll {
     animation: scroll 30s linear infinite;
+    display: inline-flex;
+    width: max-content;
+    will-change: transform;
   }
 
   /* Scroll reveal animations - initially hidden */
@@ -267,5 +286,24 @@
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* Slideshow animation for your TSX component */
+@keyframes slideRight {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .btn-automotive,
+  .btn-automotive-outline,
+  .btn-secondary {
+    @apply px-4 py-2 text-sm;
   }
 }
