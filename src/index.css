@@ -114,9 +114,16 @@
 }
 
 @layer base {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
   * {
-    @apply border-border;
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 
   html {
@@ -304,5 +311,98 @@
   .btn-automotive-outline,
   .btn-secondary {
     @apply px-4 py-2 text-sm;
+  }
+}
+
+/* Add these base styles */
+:root {
+  --scrollbar-width: calc(100vw - 100%);
+}
+
+html, 
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+/* Reset core body defaults */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Ensure all pages/routes stay contained */
+#root {
+  isolation: isolate;
+  position: relative;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Fix potential flex/grid overflow issues */
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+}
+
+/* Fix for potential padding/margin overflow */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Fix for images and other media */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* New viewport and scrollbar compensation styles */
+@layer base {
+  :root {
+    --viewport-width: 100vw;
+    --scrollbar-compensation: calc(100vw - 100%);
+  }
+
+  html,
+  body {
+    @apply max-w-[100vw] w-full overflow-x-hidden overscroll-x-none;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  #root {
+    @apply relative w-full overflow-x-clip isolate;
+    max-width: calc(100vw - var(--scrollbar-compensation));
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    @apply overflow-x-hidden overflow-y-auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    position: relative;
+    width: 100%;
+  }
+
+  #root {
+    @apply relative w-full;
+    min-height: 100dvh;
   }
 }

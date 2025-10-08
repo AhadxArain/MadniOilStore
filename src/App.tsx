@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./components/Layout";  // Add this import
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import MechanicalWork from "./pages/MechanicalWork";
@@ -13,12 +14,12 @@ import OilChangeSetup from "./pages/OilChangeSetup";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <div className="main-wrapper">
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/mechanical-work" element={<MechanicalWork />} />
@@ -28,10 +29,10 @@ const App = () => (
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </QueryClientProvider>
-  </div>
+        </Layout>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
 );
 
 export default App;
