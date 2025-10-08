@@ -365,3 +365,44 @@ img, video, iframe {
   max-width: 100%;
   height: auto;
 }
+
+/* New viewport and scrollbar compensation styles */
+@layer base {
+  :root {
+    --viewport-width: 100vw;
+    --scrollbar-compensation: calc(100vw - 100%);
+  }
+
+  html,
+  body {
+    @apply max-w-[100vw] w-full overflow-x-hidden overscroll-x-none;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  #root {
+    @apply relative w-full overflow-x-clip isolate;
+    max-width: calc(100vw - var(--scrollbar-compensation));
+  }
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  body {
+    @apply overflow-x-hidden overflow-y-auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    position: relative;
+    width: 100%;
+  }
+
+  #root {
+    @apply relative w-full;
+    min-height: 100dvh;
+  }
+}
