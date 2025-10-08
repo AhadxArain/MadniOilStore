@@ -108,10 +108,10 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			height: {
-				screen: ['100vh /* fallback */', '100dvh'],
+				screen: '100dvh',
 			},
 			minHeight: {
-				screen: ['100vh /* fallback */', '100dvh'],
+				screen: '100dvh',
 			},
 		}
 	},
