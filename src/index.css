@@ -313,3 +313,34 @@
     @apply px-4 py-2 text-sm;
   }
 }
+
+/* Add these base styles */
+:root {
+  --scrollbar-width: calc(100vw - 100%);
+}
+
+html, 
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  position: relative;
+  overflow-x: clip;
+  width: 100%;
+}
+
+/* Fix for 100vw calculations */
+.full-width {
+  width: calc(100vw - var(--scrollbar-width));
+}
+
+/* Prevent overflow from absolute elements */
+.main-wrapper {
+  position: relative;
+  overflow-x: clip;
+  width: 100%;
+}
