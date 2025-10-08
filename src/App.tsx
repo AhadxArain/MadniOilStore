@@ -13,7 +13,7 @@ import OilChangeSetup from "./pages/OilChangeSetup";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <div className="main-wrapper">
+  <div className="main-wrapper relative w-full overflow-x-hidden min-h-screen">
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
