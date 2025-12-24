@@ -114,8 +114,13 @@
 }
 
 @layer base {
-  html, body {
-    overflow-x: hidden;
+  /* overflow-x on body breaks vertical touch scroll on iOS Safari — clip on html only. */
+  html {
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  body {
     width: 100%;
     position: relative;
   }
@@ -319,38 +324,36 @@
   --scrollbar-width: calc(100vw - 100%);
 }
 
-html, 
-body {
+html {
   max-width: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
   margin: 0;
   padding: 0;
 }
 
-/* Reset core body defaults */
 body {
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 /* Ensure all pages/routes stay contained */
 #root {
   isolation: isolate;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100%;
-  max-width: 100vw;
+  max-width: 100%;
 }
 
 /* Fix potential flex/grid overflow issues */
 .main-wrapper {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  max-width: 100vw;
+  /* 100dvh matches tailwind min-h-screen; plain 100vh here was overriding and caused mobile viewport jank */
+  min-height: 100dvh;
+  max-width: 100%;
 }
 
 /* Fix for potential padding/margin overflow */
@@ -373,30 +376,27 @@ img, video, iframe {
     --scrollbar-compensation: calc(100vw - 100%);
   }
 
-  html,
+  html {
+    @apply w-full max-w-full overflow-x-clip overscroll-x-none;
+  }
+
   body {
-    @apply max-w-[100vw] w-full overflow-x-hidden overscroll-x-none;
-    touch-action: pan-y pinch-zoom;
+    @apply w-full max-w-full;
   }
 
   #root {
-    @apply relative w-full overflow-x-clip isolate;
-    max-width: calc(100vw - var(--scrollbar-compensation));
+    @apply relative w-full max-w-full overflow-x-clip isolate;
   }
 }
 
 @layer base {
+  /* Avoid overflow-y: auto on both html and body — breaks iOS/WebKit touch scroll. */
   html {
     @apply scroll-smooth;
-    -webkit-overflow-scrolling: touch;
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow-x: clip;
   }
 
   body {
-    @apply overflow-x-hidden overflow-y-auto;
-    -webkit-overflow-scrolling: touch;
-    overscroll-behavior-y: contain;
     position: relative;
     width: 100%;
   }
